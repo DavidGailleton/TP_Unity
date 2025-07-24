@@ -10,6 +10,9 @@ public class PlayerMouvement : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject camera;
     
+    public AnimatorControllerParameter speedIndex;
+
+    
     
   
     
@@ -39,6 +42,15 @@ public class PlayerMouvement : MonoBehaviour
         currentCameraRotation.x -= mouseY * sensivity;
         
         camera.gameObject.transform.localRotation = Quaternion.AngleAxis(currentCameraRotation.x, Vector3.right);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||  Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            speedIndex.defaultInt = 1;
+        }
+        else
+        {
+            speedIndex.defaultInt = 0;
+        }
     }
 
     private void PlayerMovement()
