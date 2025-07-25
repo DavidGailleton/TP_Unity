@@ -10,7 +10,7 @@ public class PlayerMouvement : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject camera;
     
-    public AnimatorControllerParameter speedIndex;
+    public Animator animator;
 
     
     
@@ -19,7 +19,7 @@ public class PlayerMouvement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        animator.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,6 +29,7 @@ public class PlayerMouvement : MonoBehaviour
         float mouseY = Input.GetAxisRaw("Mouse Y");
         HandleMouseLook(mouseX, mouseY);
         PlayerMovement();
+        AnimateBody();
     }
 
     private void HandleMouseLook(float mouseX, float mouseY)
@@ -42,15 +43,6 @@ public class PlayerMouvement : MonoBehaviour
         currentCameraRotation.x -= mouseY * sensivity;
         
         camera.gameObject.transform.localRotation = Quaternion.AngleAxis(currentCameraRotation.x, Vector3.right);
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) ||  Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-        {
-            speedIndex.defaultInt = 1;
-        }
-        else
-        {
-            speedIndex.defaultInt = 0;
-        }
     }
 
     private void PlayerMovement()
@@ -71,6 +63,57 @@ public class PlayerMouvement : MonoBehaviour
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             player.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void AnimateBody()
+    {
+        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 7);
+        }
+        else if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 1);
+
+        }
+        else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 5);
+
+        }
+        else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 3);
+
+        }
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 0);
+        }
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 4);
+        }
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 6);
+        }
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            animator.SetInteger("speedIndex", 1);
+            animator.SetInteger("playerDirection", 2);
+        }
+        else
+        {
+            animator.SetInteger("speedIndex", 0);
         }
     }
 }

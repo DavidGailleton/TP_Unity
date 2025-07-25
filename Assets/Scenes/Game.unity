@@ -1489,6 +1489,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &744243276 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7869543608362826461, guid: 9bd72731ebe2248478ba4849c274a43b, type: 3}
+  m_PrefabInstance: {fileID: 439708514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &762213765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2040,6 @@ GameObject:
   - component: {fileID: 1176486541}
   - component: {fileID: 1176486543}
   - component: {fileID: 1176486544}
-  - component: {fileID: 1176486545}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2128,6 +2132,7 @@ MonoBehaviour:
   sensivity: 1
   player: {fileID: 1176486539}
   camera: {fileID: 330585543}
+  animator: {fileID: 744243276}
 --- !u!114 &1176486544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,28 +2156,6 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1787951632}
   winPanel: {fileID: 1017124974}
   gameGameObject: {fileID: 106958857}
---- !u!95 &1176486545
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176486539}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 915576d1c8318ad63b5e01335cc424fd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1409777083
 GameObject:
   m_ObjectHideFlags: 0
